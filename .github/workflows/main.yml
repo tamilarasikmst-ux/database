@@ -1,0 +1,25 @@
+name: PHP CI/CD Demo
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.2'
+
+      - name: Check PHP Version
+        run: php -v
+
+      - name: Validate PHP File
+        run: php -l index.php
